@@ -15,24 +15,12 @@ type Game struct {
 
 }
 
-/*
-
-    [0,2,2,2],
-    [2,2,2,2],
-    [2,2,2,2],
-    [2,2,2,0] ]
-*/
-
 func main() {
     fmt.Println("2048 Console Verson...")
     var g Game
-    g.Grid[0][0]=2
-    g.Grid[0][1]=2
-    g.Grid[0][2]=2
-    g.Grid[0][3]=2
 
     fin := false
-
+    // init wo random 2
     g.genNumber()
     g.genNumber()
 
@@ -42,11 +30,10 @@ func main() {
             fmt.Println("GameOver!")
             fin = true
         }
-       
+
         if fin == true {
             break
         }
-
         fmt.Println("Move direction: u, d, l, r")
         reader := bufio.NewReader(os.Stdin)
         input, _ := reader.ReadString('\n')
@@ -68,13 +55,30 @@ func main() {
             valid_act = g.moveRight()
         default:
             fmt.Println("error input")
-            fin = true
         }
         if valid_act == false {
             fmt.Println("Action takes no effort!")
+        } else {
+            if g.isComplete() == true {
+                fin = true
+                fmt.Println("You Win!")
+            } else {
+                g.genNumber()
+            }
         }
-        g.genNumber()
     }
+}
+
+
+func(g* Game) isComplete() bool {
+    for i:=0; i<DIM; i++ {
+        for j:=0; j<DIM; j++ {
+            if g.Grid[i][j] == 2048 {
+                return true
+            }
+        }
+    }
+    return false
 }
 
 func(g* Game) clearMergeState() {
