@@ -70,7 +70,7 @@ func(g* Game) GenNumber() {
         if g.Grid[column][row] == 0 {
             g.Grid[column][row] = 2
             g.GenIndex = DIM*column + row
-            fmt.Printf("New Random 2 Idx:[%d,%d]\n", column, row)
+            //fmt.Printf("New Random 2 Idx:[%d,%d]\n", column, row)
             return
         }
     }

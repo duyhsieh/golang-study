@@ -4,30 +4,7 @@ import ("fmt"
         "os"
         "gamemodule" // this is directory name(path), not package name; package gamecore in this dir are imported
 )
-/*
-const DIM int = 4
-const CELLS int = DIM*DIM
-type Game struct {
-    Grid [DIM][DIM]int
-    Merged [DIM][DIM]bool
-    GenIndex int 
-}
 
-func NewGame() *Game {
-    // ========= if variable is referenced after functon finished, it will be allocated on heap, not stack. ============
-    g := Game { 
-        GenIndex:0,
-        //Grid: [DIM][DIM]int{ {0,0,0,2}, {0,0,0,0}, {0,0,2,2}, {1024,1024,2,2}}, 
-        // note commna is needed at last 
-        Merged: [DIM][DIM]bool{ 
-            {false,false,false,false},
-            {false,false,false,false},
-            {false,false,false,false},
-            {false,false,false,false}},
-    }
-    return &g
-}
-*/
 func main() {
     var g *gamecore.Game = gamecore.NewGame()
     fin := false
@@ -45,7 +22,7 @@ func main() {
         if fin == true {
             break
         }
-        fmt.Println("Move direction: u, d, l, r")
+        fmt.Println("Move direction:u=Up, d=Down, l=Left, r=Right")
         reader := bufio.NewReader(os.Stdin)
         input, _ := reader.ReadString('\n')
         c := input[0]
