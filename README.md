@@ -41,8 +41,11 @@ golang study project for Code Line group
 
 [Build Web Apps with Go Language](https://www.youtube.com/watch?time_continue=32&v=Vlie-srOU8c)
 
+[Build Web App 課程 github](https://github.com/GoesToEleven/go_web_app/tree/01_working_static_page)
+
 [视频笔记：理解 channels - Kavya Joshi ](https://blog.lab99.org/post/golang-2017-10-04-video-understanding-channels.html?utm_content=buffer72b88&utm_medium=social&utm_source=facebook.com&utm_campaign=buffer)
 
+[《Go Web 基础》](https://github.com/Unknwon/go-web-foundation)
 ## 部落客
 [飞雪无情的博客](http://www.flysnow.org/)
 
