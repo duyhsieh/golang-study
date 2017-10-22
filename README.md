@@ -14,6 +14,8 @@ golang study project for Code Line group
 
 [對岸整理的一些 go framework](http://www.open-open.com/lib/view/open1404741891325.html)
 
+[百度雲百寶箱](https://pan.baidu.com/s/1i5Cb3yH#list/path=%2F)
+
 ## 台灣社群相關
 [台灣 golang fb 社群](https://www.facebook.com/groups/269001993248363/)
 
