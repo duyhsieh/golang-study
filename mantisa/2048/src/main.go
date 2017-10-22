@@ -4,11 +4,12 @@ import ("fmt"
         "os"
         "gamemodule" // this is directory name(path), not package name; package gamecore in this dir are imported
 )
-
+/*
+*/
 func main() {
     var g *gamecore.Game = gamecore.NewGame()
     fin := false
-    // init wo random 2
+    // init two random 2
     g.GenNumber()
     g.GenNumber()
     g.PrintGrid()

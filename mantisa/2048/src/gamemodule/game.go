@@ -13,6 +13,9 @@ type Game struct {
 }
 
 // public methods: starts with upper case. other package can call it.
+func foo() {
+    fmt.Println("foo")
+}
 
 func NewGame() *Game {
     // ========= if variable is referenced after functon finished, it will be allocated on heap, not stack. ============
