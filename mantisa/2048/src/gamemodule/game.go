@@ -21,7 +21,7 @@ func NewGame() *Game {
     // ========= if variable is referenced after functon finished, it will be allocated on heap, not stack. ============
     g := Game { 
         GenIndex:0,
-        //Grid: [DIM][DIM]int{ {0,0,0,2}, {0,0,0,0}, {0,0,2,2}, {1024,1024,2,2}}, 
+        Grid: [DIM][DIM]int{ {2,4,8,16}, {4,8,16,32}, {8,16,32,64}, {0,0,2,2}}, 
         // note commna is needed at last 
         Merged: [DIM][DIM]bool{ 
             {false,false,false,false},
@@ -80,9 +80,28 @@ func(g* Game) GenNumber() {
 }
 
 func(g* Game) IsDead() bool{
+    // check 0
     for i:=0; i < DIM; i++ {
         for j:=0; j < DIM; j++ {
+            // checck down
             if g.Grid[i][j] == 0 {
+                return false
+            }
+        }
+    }
+
+    // check row shiftable
+    for i:=0; i < DIM; i++ {
+        for j:=0; j < DIM-1; j++ {
+            if g.Grid[i][j] == g.Grid[i][j+1] {
+                return false
+            }
+        }
+    }
+    //check column shiftable
+    for i:=0; i < DIM; i++ {
+        for j:=0; j < DIM-1; j++ {
+            if g.Grid[j][i] == g.Grid[j+1][i] {
                 return false
             }
         }
