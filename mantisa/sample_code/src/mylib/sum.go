@@ -1,6 +1,10 @@
 package mylib
 
-func mySum(x int, y int) int {
+func Sum(x int, y int) int {
+    return sum(x,y)
+}
+
+func sum(x int, y int) int { // accessible within package
     return x+y
 }
 
