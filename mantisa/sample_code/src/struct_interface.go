@@ -19,6 +19,19 @@ type Mage struct {
     Character
 }
 
+type Assassin struct {
+    Behavior
+    Character
+}
+
+func(p *Assassin) Move() int {
+    return 6
+}
+
+func(p *Assassin) Attack() string {
+    return "dagger"
+}
+
 func(p *Ninja) Move() int {
     return 4
 }
@@ -54,9 +67,11 @@ func GoodTakeAction(p ...Behavior) {
 func main() {
     n := Ninja{Character{Name:"Orochi"}}
     m := Mage{Character{Name:"Sakura"}}
+    a := Assassin{}
     BadTakeAction1(&n)
     BadTakeAction2(&n,&m)
     //TakeAction(&n)  // note: & get address can be casted to pointers
     //TakeAction(&m) 
-    GoodTakeAction(&n, &m)
+    //GoodTakeAction(&n, &m)
+    GoodTakeAction(&n, &m, &a)
 }
