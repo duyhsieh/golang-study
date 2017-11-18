@@ -1,3 +1,5 @@
-.a
-.log
-
+*.log
+*.swp
+pkg
+*.a
+*.v2

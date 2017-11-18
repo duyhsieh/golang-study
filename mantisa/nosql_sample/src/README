@@ -1,0 +1,5 @@
+安裝:
+go get gopkg.in/mgo.v2
+安裝路徑是根據你的GOPATH，所以在哪裡下指令都沒關係
+go get會把source code抓到GOPATH/src底下，然後在GOPATH/pkg底下編譯出.a檔案
+

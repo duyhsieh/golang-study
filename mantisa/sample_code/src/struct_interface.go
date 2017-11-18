@@ -24,25 +24,32 @@ type Assassin struct {
     Character
 }
 
-type CriticalAttack struct {
+// Actually you can have multiple anonymous fields. It's just implicit composition. 
+// So if you embed two interfaces having same signature, compilie will fail
+// Since only structs can be receiver to function (causing a new implementation), you must declare method decoration with struct
+// So struct is like an object with methods. Interface is a reference to some object having those APIs.
+type CriticalAttack struct { 
     Behavior  // used to initialize initial implementation from whatever passed in , and then override
 }
 
+// this can actually implement decoration pattern
 func(c* CriticalAttack) Attack() string {
     //return "Critical !"
     return "Critical Attack! " + c.Behavior.Attack() // c.Behavior.Attack() can make magic that it behaves as whatever you passed in...
 }
-func SetCriticalAttack(src Behavior) Behavior {
-    return &CriticalAttack{src}
+
+// just like decorate it with Critical Attack
+func MakeCriticalAttack(src Behavior) Behavior {
+    return &CriticalAttack{src}  // return a CriticalAttack object inheriting implementations from src, while overriding some of the them
 }
 
 // only override Attack
 func(p *Assassin) Attack() string {
-    return "Assassin dagger"
+    return  "Assassin dagger"
 }
 
 func(p *Ninja) Move() int {
-    return 4
+    return 9
 }
 
 func(p *Ninja) Attack() string {
@@ -76,7 +83,7 @@ func main() {
     n := Ninja{Character{Name:"Orochi"}}
     m := Mage{Character{Name:"Sakura"}}
     a := Assassin{&Ninja{Character{Name:"Not_Important_Only_To_Take_Implementation"}}, Character{Name:"Taki"} }
-    var x = SetCriticalAttack(&Ninja{} ) // use NInja as default implementation, but override Attack (inspiration from GO reverse)
+    var x = MakeCriticalAttack(&Ninja{} ) // use NInja as default implementation, but override Attack (inspiration from GO reverse)
 
     BadTakeAction1(&n)
     BadTakeAction2(&n,&m)
